@@ -12,7 +12,7 @@ public class Table {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long Id;
 
     @Column(name = "table_number")
     private int tableNumber;
@@ -23,7 +23,7 @@ public class Table {
     @Column(name="reserved")
     private boolean reserved;
 
-    @JsonIgnoreProperties("table")
+//    @JsonIgnoreProperties("table")
     @OneToMany(mappedBy = "table", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
@@ -47,8 +47,8 @@ public class Table {
 
     public boolean notDoubleBooking(Booking booking1) {
         for (Booking booking : this.bookings) {
-            if (booking1.getStartTime().isAfter(booking.getEndtime()) ||
-                    booking1.getEndtime().isBefore(booking.getStartTime()))
+            if (booking1.getStartTime().isAfter(booking.getEndTime()) ||
+                    booking1.getEndTime().isBefore(booking.getStartTime()))
             return true;
         }
         return false;
@@ -59,7 +59,7 @@ public class Table {
             if (this.bookings.size() == 0){
                 this.bookings.add(booking1);
                 this.setReserved(true);
-            }else{
+            } else{
                 if(notDoubleBooking(booking1)){
                     this.bookings.add(booking1);
                     this.setReserved(true);
@@ -69,11 +69,11 @@ public class Table {
     }
 
     public Long getId() {
-        return id;
+        return Id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public int getTableNumber() {

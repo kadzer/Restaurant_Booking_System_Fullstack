@@ -9,7 +9,6 @@ const Table = (props) => {
       <td>{props.table.capacity}</td>
       <td>{String(props.table.reserved)}</td>
       <td>Booking goes here</td>
-      {/* <td>{props.table.bookings}</td> */}
     </tr>
   )
 }

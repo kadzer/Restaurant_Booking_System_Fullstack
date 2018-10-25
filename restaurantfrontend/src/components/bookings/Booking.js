@@ -1,4 +1,5 @@
 import React from 'react';
+import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 
 const Booking = (props) => {
@@ -7,15 +8,14 @@ const Booking = (props) => {
 	let date2 = new Date(props.booking.endTime);
 	let formattedEndTime = moment(date2).format("DD-MM-YY HH:mm")
 
+	const url = "/bookings/" + props.booking.id + "/edit"
 	return (
 		<tr>
-			{/* <td>{props.booking.customer}</td> */}
-			<td>Customer goes here</td>
+			<td><a href={url}>{props.booking.customer.name}</a></td>
 			<td>{props.booking.party}</td>
 			<td>{formattedStartTime}</td>
 			<td>{formattedEndTime}</td>
-			<td>Table goes here</td>
-			{/* <td>{props.booking.table}</td> */}
+			<td>{props.booking.table.tableNumber}</td>
 		</tr>
 	)
 }
